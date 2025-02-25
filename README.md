@@ -13,7 +13,7 @@ The outputs of the population model can then be used to determine catch limits a
 The Generalised Yield Model has been superseded by the Grym (Maschette et al., 2023). The Grym is an open source implementation of the Generalised Yield Model written in R. The Grym also provides more accurate results through changes to the governing equations originally proposed by Constable & de la Mare (1996). If you wish to use the Grym use this [code](https://github.com/AustralianAntarcticDivision/Grym). If you wish to rerun old assessments with the Generalised Yield Model software you can download it from this repository.
 
 
-## Installation
+## Installation of the GYM
 
 To ensure that your GYM application and files are installed correctly, up to date and function correctly, when using this website for the first time please follow these steps:
 
