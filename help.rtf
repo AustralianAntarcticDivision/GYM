@@ -1,0 +1,208 @@
+Generalised Yield (GY) Model Scenario Manager
+
+Brief Troubleshooting Guide by  Scott Marshall
+Australian Antarctic Division, Channel Highway, Kingston  Tasmania  Australia  7050.
+Please contact gymtech@aad.gov.au
+
+
+(c)opyright 1998-2002, Australian Antarctic Division
+
+Release 1.0:   20020826 S Marshall
+Release 2.0:   20030922 S Marshall for ver 501d
+Release 2.1:   20031022 S Marshall for ver 5.01d6
+Release 2.1.1  20031106 S Marshall 
+
+Please contact us if you would like any further information in this file in future or have any other questions.
+A user guide is available from the AAD separately.
+
+If you wish to be included on a mailing list regarding updates of the manual or the software then send your details to the address above.
+
+
+
+Installation Notes
+-----------------------------
+
+CD Install
+----------------
+The CD comes with 1 setup.exe corresponding to the target platforms:
+	1. Intel/Windows 95/98/2000 platform
+
+
+Download Install
+----------------
+GYM can be downloaded from the Australian Antarctic Division (www.aad.gov.au/)
+
+
+Install Info
+----------------
+You need only run the inst501.exe program. 
+A path "C:\Program Files\Generalised Yield Model" is created by default with a Start Menu icon GYI5 which corresponds to GYI501.EXE. 
+Your existing database will not be overwritten. However, you should always make a copy. You can opt to have your current database
+upgraded to the current version if you are using a database version 4 or earlier.
+
+All data is kept in an Access database file, version 2000, named by default GYI501.MDB and installed into the same folder as the executables.
+When GYI501.EXE is first run, an information and settings dialog is shown.
+GYI501.EXE stores its settings in the registry due to problems creating INI files in the application directory in some environments. You can edit its settings from the GYI501.EXE View|Settings menu.
+This allows you change the filenames and folders of the various files.
+
+Contact: Tech support (gymtech@antdiv.gov.au) (see about box in GYI501.EXE)
+
+
+
+Application Files Installed:
+-----------------------------
+Default application directory is "c:\Program Files\Generalised Yield Model"
+Files installed into this directory are:
+	GYI501.exe		Scenario manager executable
+	GYM501d.exe		Simulation kernel
+	GYMHelp.exe		Form help viewer
+	readme.txt		Do it
+
+
+
+Known Problems:
+-----------------------------
+None
+(see also Change History)
+
+
+
+
+Installed components:
+-----------------------------
+
+GYUI relies on the following third party components. Known occasions where the application could fail through these are shown.
+Generally, these problems can be fixed by reinstalling this application with all the latest files, as we build with the latest service packs for security, performance, and stability.
+
+
+Data Dynamics #Grid:
+Files Affected:		sg20o.ocx
+No known problems
+
+
+MathSoft Axum 7
+Files affected:		Ax7Obj.tlb
+We believe this application will run with Axum versions 4 and later. However, in situations where your Axum installation is incompatible with this application, you will notice problems when creating graphs in the post processing phase. Otherwise, all other aspects should operate normally.
+
+
+Olectra Chart
+Files affected:		OLCH*.[dll/ocx]
+Olectra charts are used on the demographics form. Should a problem with the Olectra installation occur, the application will operate correctly other than the single demographics form.
+
+
+Microsoft DAO
+Files affected:		various DAO
+The database for this application is in Microsoft Access 2000 format. The installation software for GYM updates the necessary files to ensure you don't require Access 2000 on your machine. It is very likely that the software will not operate correctly if the database drivers are incorrect.
+Should you wish to install the latest DAO drivers to avoid problems, please visit http://www.microsoft.com/data/download.htm
+MDAC 2.6 SP2 is sufficient.
+
+
+Microsoft Visual Basic
+Files affected:		various runtime
+This application has been developed in Visual Basic 6 SP5. The required runtime files for this application will be installed. 
+Microsoft supply the runtime files required for VB at http://www.microsoft.com/downloads/release.asp?releaseid=28337&area=top&ordinal=23
+
+
+
+Change History
+-----------------------------
+
+Existing users will be familiar with the version 5.01 release in February 2003. This version fixes a small number of problems encountered by users.
+This software version is compatible with previous 5.01 databases; no database changes are required for this updated version.
+
+The changes in 5.01b are:
+- enable opening of scenario manager with a missing database, enabling us to better report error messages on startup
+- autoconfigure and file search were searching for v4 files
+- minor user interface improvements and messages on Fisheries and Length at Age form
+- adjusted output files for simulator to be in new format (with addition of the simulation reference date in the file, and field name changes)
+
+
+Changes in 5.01c were released during August 2003.
+These included
+- escapement ratio in Result Summary form
+- split year calculation and viewing
+- reference start date corrections
+- bug fix for biomass import
+
+
+Version 5.01d was released the week of 22nd September 2003.
+GYUI Changes in this version include:
+- fix for some users who, after upgrading, received a Type Mismatch error on startup
+- fix for drag-move-scenario not being saved to db
+- problem fix for some users experiencing hang whilst choosing an analysis method on the Post Processing Form
+- fixes for import of scenario files from other versions and raw scenario input files (files now case insensitive, additional version check capabilities added.
+- adding one too many rows of biomass data with last row all zeroes.
+- fixed null check loading biomass data (symptom: first biomass trial was 0, then 2.
+- improvement in directory handling whilst printing input files and exporting.
+- Added CPUE vector import from file and clipboard
+- added copy of CPUE vector on input form
+- fixed CPUE adjusted value calculation on summary form
+- allow resize of result biomass and SB0 forms
+- added Execute button to analysis toolbar; removed Next button from form
+- changed ordering of trial and year values in results forms drop-downs
+- modified menu items (added Clear results to node menu, added Run single to Batch menu)
+- added Node Clone option to scenario context menu
+- scenario name now editable on properties form
+
+Simulator changes:
+-  Monitoring average stock size over a number of increments during the year, including the last increment of the year - applicable to spawning biomass and fishable biomass.
+Stock was being incorrectly averaged over the last increment resulting in lower than expected spawning and fishable biomass in those cases.  Now been rectified.
+This will not have affected assessments when spawning biomass was not to be monitored in the last increment.
+
+
+Version 5.01d6 was released 22nd October 2003
+Change notes:
+
+- Investigate error in entering multiple rows into "unbound table" based forms
+	*** likely due and fixed to (LAA) empty fields in LAA/VB
+- Recruitment surveys: add new year doesn't sort
+	*** done
+- db upgrade lAge field error (is called iAge)
+	*** done (caused by field rename), also removed old entry forms from list
+- upgrade fix for versions 4.0 to 4.2
+	*** fixed, probably not encountered in the wild
+- non-English region of OS causes Type Mismatch on some date operations
+	*** fixed
+- rename "Clone scenario" to "Create copy"
+	*** fixed
+- results data export
+	*** done
+- import fishery data from a file
+	*** done
+- enable directory chooser on File Menu
+	*** done
+	*** requires new control
+- saving of option to compact/no-compact on exit was failing
+	*** fixed
+- scenario comparisons
+	*** to do
+- (possibly) introduced new problems for exporting re field names for age
+	*** fixed
+-- No obvious way of adding notes and comments after results have been generated. Often when doing exploratory trials one only realises a scenario is worth keeping and annotating after it has been generated.
+	*** done; added new field to Base form
+
+- Allow insert of row (LAA order by age)
+	- forms affected:
+		natural mortality (age and time of year)
+		maturity
+		recruitment (vector)
+		stock monitoring
+	- Note that some of these re-retrieve data ordered by one or more columns. These are:
+		natural mortality (time of year)
+		maturity
+		recruitment (vector)
+	- The others are ordered by the entry. This requires an order field added for
+		tblParmsStock
+		tblParmsMortalityTime
+	*** done; changed order of retrieval on relevant forms
+
+- Naming of cloned scenarios. The GUI usefully adds a (1) after a cloned scenario. The second time it'll add an (2). Instead of adding the '(2)' it should *replace* the '(1)' with '(2)'.
+	*** done; will be changed to "Copy (n) of ..." in future
+- add status bar for forms replacing message boxes
+	*** done
+
+5.01d6 second installer
+If you have not previously installed GYM, new users of 5.01d6 may receive the following error on opening a parameter form:
+Run-time error '339': Component RICHTX32.ocx' or one of its dependencies not correctly registered: a file is missing or invalid
+Please download a new installer to fix this problem.
+
